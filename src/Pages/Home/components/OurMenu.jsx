@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SectionTitle from '../../../Shared components/SectionTitle'
+import MenuItem from '../../../Shared components/MenuItem';
 
 const OurMenu = () => {
 
@@ -21,14 +22,15 @@ const OurMenu = () => {
         {/* a menu item */}
         {menu.map((item, i) => {
           return (
-            <div key={i} className='flex gap-5'>
-              <img src={item?.image} alt="" className='w-32 object-cover rounded-tr-full rounded-br-full rounded-bl-full'/>
-              <div>
-                <h3 className='cinzel text-xl'>{item?.name}------------</h3>
-                <p className='text-base'>{item.recipe}</p>
-              </div>
-              <p className='text-[#BB8506]'>${item.price}</p>
-            </div>
+            <MenuItem key={i} item={item}/>
+            // <div key={i} className='flex gap-5'>
+            //   <img src={item?.image} alt="" className='w-32 object-cover rounded-tr-full rounded-br-full rounded-bl-full'/>
+            //   <div>
+            //     <h3 className='cinzel text-xl'>{item?.name}------------</h3>
+            //     <p className='text-base'>{item.recipe}</p>
+            //   </div>
+            //   <p className='text-[#BB8506]'>${item.price}</p>
+            // </div>
           )
         })}
         

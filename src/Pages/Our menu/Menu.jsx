@@ -5,11 +5,14 @@ import pizza from '/bistro-boss-restaurant-resources-main/assets/menu/pizza-bg.j
 import salad from '/bistro-boss-restaurant-resources-main/assets/menu/salad-bg.jpg'
 import soup from '/bistro-boss-restaurant-resources-main/assets/menu/soup-bg.jpg'
 import MenuBanner from './Components/MenuBanner'
+import SectionTitle from '../../Shared components/SectionTitle'
 
 const Menu = () => {
   return (
     <div className='text-4xl space-y-20'>
       <MenuBanner/>
+      <SectionTitle title="today's offer" phrase="Don't miss"/>
+      
       <MenuTitle bg={dessert} title='desserts' para='Treat yourself to our delectable dessert options—indulge in creamy cheesecakes, decadent chocolate lava cakes, and refreshing fruit tarts.'/>
       <MenuTitle bg={pizza} title='pizza' para='Satisfy your cravings with our mouthwatering pizzas—enjoy traditional favorites like pepperoni or margherita, or explore unique combinations like BBQ chicken or vegetarian supreme.'/>
       <MenuTitle bg={salad} title='salads' para='Opt for a lighter option with our fresh salads—delight in crisp Caesar salads, vibrant Greek salads, or protein-packed grilled chicken salads, all bursting with flavor and nutrition.'/>
