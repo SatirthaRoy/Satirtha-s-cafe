@@ -4,6 +4,7 @@ import 'react-tabs/style/react-tabs.css';
 import useMenuFetch from '../../../hooks/useMenuFetch';
 import Card from '../../../Shared components/Card';
 import { useParams } from 'react-router-dom';
+import PagingItems from './PagingItems';
 
 const ShopItems = () => {
   const [menu] = useMenuFetch();
@@ -19,38 +20,28 @@ const ShopItems = () => {
   return (
     <Tabs defaultIndex={index}>
       <TabList className='flex gap-4 justify-center text-2xl font-medium mt-20'>
-        <Tab className='uppercase'>Salad</Tab>
-        <Tab className='uppercase'>Pizza</Tab>
-        <Tab className='uppercase'>soup</Tab>
-        <Tab className='uppercase'>dessert</Tab>
-        <Tab className='uppercase'>drinks</Tab>
+        <Tab className='uppercase cursor-pointer'>Salad</Tab>
+        <Tab className='uppercase cursor-pointer'>Pizza</Tab>
+        <Tab className='uppercase cursor-pointer'>soup</Tab>
+        <Tab className='uppercase cursor-pointer'>dessert</Tab>
+        <Tab className='uppercase cursor-pointer'>drinks</Tab>
       </TabList>
 
       <div className='mt-16 w-11/12 mx-auto'>
         <TabPanel>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-            {saladItems.map((item, i) => <Card key={i} item={item}/>)}
-          </div>
+          <PagingItems items={saladItems}/>
         </TabPanel>
         <TabPanel>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-            {pizzaItems.map((item, i) => <Card key={i} item={item}/>)}
-          </div>
+        <PagingItems items={pizzaItems}/>
         </TabPanel>
         <TabPanel>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-            {soupItems.map((item, i) => <Card key={i} item={item}/>)}
-          </div>
+          <PagingItems items={soupItems}/>
         </TabPanel>
         <TabPanel>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-            {dessertItems.map((item, i) => <Card key={i} item={item}/>)}
-          </div>
+          <PagingItems items={dessertItems}/>
         </TabPanel>
         <TabPanel>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-          {drinksItems.map((item, i) => <Card key={i} item={item}/>)}
-          </div>
+          <PagingItems items={drinksItems}/>
         </TabPanel>
       </div>
     </Tabs>
