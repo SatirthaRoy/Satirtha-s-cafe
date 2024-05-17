@@ -1,6 +1,7 @@
 
 import React from 'react'
 import MenuItem from '../../../Shared components/MenuItem'
+import { Link } from 'react-router-dom'
 
 const ShowMenu = ({items}) => {
   return (
@@ -8,7 +9,9 @@ const ShowMenu = ({items}) => {
       <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
         {items.map((item, i) => <MenuItem key={i} item={item}/>)}
       </div>
-      <button className='mx-auto block border-b-4 border-b-black rounded-3xl p-4 text-black font-semibold text-xl hover:bg-black hover:text-white'>ORDER YOUR FAVOURITE FOOD</button>
+      <Link to={`/shop/${items[0]?.category}`}>
+        <button className='mx-auto block border-b-4 border-b-black rounded-3xl p-4 text-black font-semibold text-xl hover:bg-black hover:text-white mt-16'>ORDER YOUR FAVOURITE FOOD</button>
+      </Link>
     </div>
     
   )

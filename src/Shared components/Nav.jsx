@@ -30,7 +30,7 @@ const Nav = () => {
         color="blue-gray"
         className="p-1"
       >
-        <NavLink to='/' href="#" className={({isActive}) => isActive ? `flex items-center text-[#EEFF25]` : `flex items-center`}>
+        <NavLink to='/' className={({isActive}) => isActive ? `flex items-center text-[#EEFF25]` : `flex items-center`}>
           Home
         </NavLink>
       </Typography>
@@ -40,7 +40,7 @@ const Nav = () => {
         color="blue-gray"
         className="p-1"
       >
-        <NavLink href="#" className={({isActive}) => isActive ? `flex items-center text-[#EEFF25]` : `flex items-center`}>
+        <NavLink className={({isActive}) => isActive ? `flex items-center text-[#EEFF25]` : `flex items-center`}>
           Contact Us
         </NavLink>
       </Typography>
@@ -50,7 +50,7 @@ const Nav = () => {
         color="blue-gray"
         className="p-1"
       >
-        <NavLink href="#" className={({isActive}) => isActive ? `flex items-center text-[#EEFF25]` : `flex items-center`}>
+        <NavLink className={({isActive}) => isActive ? `flex items-center text-[#EEFF25]` : `flex items-center`}>
           Dashboard
         </NavLink>
       </Typography>
@@ -60,7 +60,7 @@ const Nav = () => {
         color="blue-gray"
         className="p-1"
       >
-        <NavLink to='/menu' href="#" className={({isActive}) => isActive ? `flex items-center text-[#EEFF25]` : `flex items-center`}>
+        <NavLink to='/menu' className={({isActive}) => isActive ? `flex items-center text-[#EEFF25]` : `flex items-center`}>
           our menu
         </NavLink>
       </Typography>
@@ -70,7 +70,7 @@ const Nav = () => {
         color="blue-gray"
         className="p-1"
       >
-        <NavLink href="#" className={({isActive}) => isActive ? `flex items-center text-[#EEFF25]` : `flex items-center`}>
+        <NavLink to='/shop/salad' className={({isActive}) => isActive ? `flex items-center text-[#EEFF25]` : `flex items-center`}>
           our shop
         </NavLink>
       </Typography>
@@ -83,7 +83,7 @@ const Nav = () => {
         <div className="flex items-center justify-between text-blue-gray-900">
           <Typography
             as="a"
-            href="#"
+          
             className="mr-4 cursor-pointer py-1.5 cinzel text-3xl font-black text-white"
           >
             BISTRO BOSS <br />

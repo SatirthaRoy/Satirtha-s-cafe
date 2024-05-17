@@ -4,10 +4,11 @@ import dessert from '/bistro-boss-restaurant-resources-main/assets/menu/dessert-
 import pizza from '/bistro-boss-restaurant-resources-main/assets/menu/pizza-bg.jpg'
 import salad from '/bistro-boss-restaurant-resources-main/assets/menu/salad-bg.jpg'
 import soup from '/bistro-boss-restaurant-resources-main/assets/menu/soup-bg.jpg'
-import MenuBanner from './Components/MenuBanner'
 import SectionTitle from '../../Shared components/SectionTitle'
 import ShowMenu from './Components/ShowMenu'
 import useMenuFetch from '../../hooks/useMenuFetch'
+import PageBanner from '../../Shared components/PageBanner'
+import menuBanner from '/bistro-boss-restaurant-resources-main/assets/menu/banner3.jpg';
 
 const Menu = () => {
 
@@ -20,7 +21,7 @@ const Menu = () => {
 
   return (
     <div className='text-4xl space-y-20'>
-      <MenuBanner/>
+      <PageBanner img={menuBanner} title='Our Menu' para='Would you like to try a dish?'/>
       <SectionTitle title="today's offer" phrase="Don't miss"/>
       <ShowMenu items={offeredItems}/>
       <MenuTitle bg={dessert} title='desserts' para='Treat yourself to our delectable dessert options—indulge in creamy cheesecakes, decadent chocolate lava cakes, and refreshing fruit tarts.'/>
