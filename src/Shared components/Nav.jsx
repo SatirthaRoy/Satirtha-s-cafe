@@ -7,7 +7,7 @@ import {
   Button,
   IconButton,
 } from "@material-tailwind/react";
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
   
 
 
@@ -92,20 +92,24 @@ const Nav = () => {
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
             <div className="flex items-center gap-x-1">
-              <Button
-                variant="text"
-                size="sm"
-                className="hidden lg:inline-block bg-yellow-800 text-white px-5 py-3"
-              >
-                <span>Log In</span>
-              </Button>
-              <Button
-                variant="text"
-                size="sm"
-                className="hidden lg:inline-block bg-orange-900 text-white px-5 py-3"
-              >
-                <span>Sign Up</span>
-              </Button>
+              <Link to='/login'>
+                <Button
+                  variant="text"
+                  size="sm"
+                  className="hidden lg:inline-block bg-yellow-800 text-white px-5 py-3"
+                >
+                  <span>Log In</span>
+                </Button>
+              </Link>
+              <Link to='/register'>
+                <Button
+                  variant="text"
+                  size="sm"
+                  className="hidden lg:inline-block bg-orange-900 text-white px-5 py-3"
+                >
+                  <span>Sign Up</span>
+                </Button>
+              </Link>
             </div>
             <IconButton
               variant="text"
@@ -149,12 +153,17 @@ const Nav = () => {
         <MobileNav open={openNav}>
           {navList}
           <div className="flex items-center gap-x-1">
-            <Button fullWidth variant="text" size="sm" className="bg-yellow-800 text-white px-5 py-3">
-              <span>Log In</span>
-            </Button>
-            <Button fullWidth variant="text" size="sm" className="bg-orange-900 text-white px-5 py-3">
-              <span>Sign Up</span>
-            </Button>
+            
+            <Link to='/login'>
+              <Button fullWidth variant="text" size="sm" className="bg-yellow-800 text-white px-5 py-3">
+                <span>Log In</span>
+              </Button>
+            </Link>
+            <Link to='/register'>
+              <Button fullWidth variant="text" size="sm" className="bg-orange-900 text-white px-5 py-3">
+                <span>Sign Up</span>
+              </Button>
+            </Link>
           </div>
         </MobileNav>
       </Navbar>

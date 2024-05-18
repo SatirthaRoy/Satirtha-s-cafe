@@ -9,6 +9,8 @@ import {
 import Home from './Pages/Home/Home.jsx';
 import Menu from './Pages/Our menu/Menu.jsx';
 import Shop from './Pages/Our Shop/Shop.jsx';
+import SignUp from './Pages/Login and Register/SignUp.jsx';
+import Login from './Pages/Login and Register/Login.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
       {
         path: '/shop/:category',
         element: <Shop/>
+      },
+      {
+        path: '/login',
+        element: <Login/>
+      },
+      {
+        path: '/register',
+        element: <SignUp/>
       }
     ]
   }

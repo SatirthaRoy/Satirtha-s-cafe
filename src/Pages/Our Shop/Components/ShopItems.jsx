@@ -28,7 +28,7 @@ const ShopItems = () => {
         <Tab className='uppercase cursor-pointer'>drinks</Tab>
       </TabList>
 
-      <div className='mt-16 w-11/12 mx-auto'>
+      <div className='my-16 w-11/12 mx-auto'>
         <TabPanel>
           <PagingItems items={saladItems}/>
         </TabPanel>
