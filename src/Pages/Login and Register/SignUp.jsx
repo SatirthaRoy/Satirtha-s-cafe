@@ -1,14 +1,29 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import useData from '../../hooks/useData'
+import { updateProfile } from 'firebase/auth'
+import toast from 'react-hot-toast'
 
 const SignUp = () => {
 
+  const navigate = useNavigate();
   const { register, handleSubmit, formState: {errors} } = useForm()
+
+  const {auth, signUp, setUser} = useData();
 
   const onSubmit = (data, e) => {
     console.log(data);
+    signUp(data.email, data.password)
+    .then(result => {
+      console.log(result.user);
+      updateProfile(auth.currentUser, {displayName: data.name})
+      setUser(result.user);
+      toast.success('Succesfully registered.')
+      navigate('/');
+    })
+    .catch(e => console.log('signUp error: ', e))
   } 
 
   return (

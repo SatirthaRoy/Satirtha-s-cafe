@@ -8,12 +8,14 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { Link, NavLink } from 'react-router-dom';
+import useData from '../hooks/useData';
   
 
 
 const Nav = () => {
 
   const [openNav, setOpenNav] = useState(false);
+  const {user, logOut} = useData()
  
   React.useEffect(() => {
     window.addEventListener(
@@ -91,7 +93,21 @@ const Nav = () => {
           </Typography>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
-            <div className="flex items-center gap-x-1">
+            {user ? 
+              <div className='flex justify-center items-center gap-5'>
+                <div className='size-12 rounded-full'>
+                  <img src={user?.photoURL} alt="" className='size-12 rounded-full'/>
+                </div>
+                <Button
+                  variant="text"
+                  size="sm"
+                  className="hidden lg:inline-block bg-orange-900 text-white px-5 py-3"
+                  onClick={() => logOut().then(() => console.log('signed OUT'))}
+                >
+                  <span>Log Out</span>
+                </Button>
+              </div>
+            : <div className="flex items-center gap-x-1">
               <Link to='/login'>
                 <Button
                   variant="text"
@@ -110,7 +126,7 @@ const Nav = () => {
                   <span>Sign Up</span>
                 </Button>
               </Link>
-            </div>
+            </div>}
             <IconButton
               variant="text"
               className="ml-auto h-6 w-6 text-white hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
@@ -152,6 +168,20 @@ const Nav = () => {
         </div>
         <MobileNav open={openNav}>
           {navList}
+          {user? 
+            <div className='flex justify-center items-center gap-5'>
+             <div className='size-12 rounded-full'>
+               <img src={user?.photoURL} alt="" className='w-full size-12 rounded-full object-cover'/>
+             </div>
+             <Button
+               variant="text"
+               size="sm"
+               className="lg:inline-block bg-orange-900 text-white px-5 py-3"
+               onClick={() => logOut().then(() => console.log('signed OUT'))}
+             >
+               <span>Log Out</span>
+             </Button>
+           </div> :
           <div className="flex items-center gap-x-1">
             
             <Link to='/login'>
@@ -164,7 +194,7 @@ const Nav = () => {
                 <span>Sign Up</span>
               </Button>
             </Link>
-          </div>
+          </div>}
         </MobileNav>
       </Navbar>
       

@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom"
 import Footer from "./Shared components/Footer"
 import Nav from "./Shared components/Nav"
 import { ScrollRestoration } from "react-router-dom"
+import { Toaster } from "react-hot-toast"
 
 function App() {
 
@@ -10,7 +11,11 @@ function App() {
       <ScrollRestoration/>
       <Nav/>    
       <Outlet/>
-      <Footer/>      
+      <Footer/>
+      <Toaster 
+        position="top-center"
+        reverseOrder={false}
+      /> 
     </div>
   )
 }
