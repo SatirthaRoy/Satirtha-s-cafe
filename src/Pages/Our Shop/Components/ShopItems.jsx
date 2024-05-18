@@ -10,6 +10,7 @@ const ShopItems = () => {
   const [menu] = useMenuFetch();
   const categoryArr = ['salad', 'pizza', 'soup', 'dessert', 'drinks'];
   const {category} = useParams();
+  console.log('category: ',category);
   console.log(categoryArr.indexOf(category));
   const [index, setIndex] = useState(categoryArr.indexOf(category));
   const dessertItems = menu.filter(item => item?.category === "dessert")
@@ -18,8 +19,8 @@ const ShopItems = () => {
   const saladItems = menu.filter(item => item?.category === "salad")
   const drinksItems = menu.filter(item => item?.category === "drinks")
   return (
-    <Tabs defaultIndex={index}>
-      <TabList className='flex gap-4 justify-center text-2xl font-medium mt-20'>
+    <Tabs defaultIndex={index === -1 ? 0 : index}>
+      <TabList className='flex gap-4 flex-wrap justify-center text-2xl font-medium mt-20'>
         <Tab className='uppercase cursor-pointer'>Salad</Tab>
         <Tab className='uppercase cursor-pointer'>Pizza</Tab>
         <Tab className='uppercase cursor-pointer'>soup</Tab>

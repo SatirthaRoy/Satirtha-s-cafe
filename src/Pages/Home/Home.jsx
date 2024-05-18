@@ -22,7 +22,7 @@ const Home = () => {
       <OurMenu/>
       {/* call us now */}
       <div className='w-11/12 bg-black text-white py-24 mx-auto'>
-        <h1 className='text-center text-5xl font-semibold'>Call Us: +88 0192345678910</h1>
+        <h1 className='text-center text-2xl md:text-5xl font-semibold'>Call Us: +880192345678910</h1>
       </div>
       <OurRecomends/>
       <FromOurMenu/>

@@ -70,7 +70,7 @@ const Nav = () => {
         color="blue-gray"
         className="p-1"
       >
-        <NavLink to='/shop/salad' className={({isActive}) => isActive ? `flex items-center text-[#EEFF25]` : `flex items-center`}>
+        <NavLink to='/shop' className={({isActive}) => isActive ? `flex items-center text-[#EEFF25]` : `flex items-center`}>
           our shop
         </NavLink>
       </Typography>
