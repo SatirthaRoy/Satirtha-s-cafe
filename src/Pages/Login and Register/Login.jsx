@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import useData from '../../hooks/useData';
 import toast from 'react-hot-toast';
@@ -9,6 +9,8 @@ import toast from 'react-hot-toast';
 const Login = () => {
 
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
   const { register, handleSubmit, formState: {errors} } = useForm()
   const [capError, setCapError] = useState(false);
   const {signIn, setUser} = useData();
@@ -21,7 +23,7 @@ const Login = () => {
         console.log(result.user);
         setUser(result.user);
         toast.success('Successfully logged in.');
-        navigate('/');
+        navigate(location?.state?.from?.pathname || '/');
       })
       .catch(e => {
         console.log('sign in err: ', e);
