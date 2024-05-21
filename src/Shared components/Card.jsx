@@ -3,6 +3,7 @@ import useData from "../hooks/useData";
 import Swal from "sweetalert2";
 import useAxios from "../hooks/useAxios";
 import toast from "react-hot-toast";
+import useCart from "../hooks/useCart";
 
 
 
@@ -12,6 +13,7 @@ const Card = ({item}) => {
   const location = useLocation();
   const {image, name, recipe, price} = item;
   const {user} = useData();
+  const [, refetch] = useCart();
   const cardAction = () => {
     if(!user) {
       Swal.fire({
@@ -39,6 +41,7 @@ const Card = ({item}) => {
       .then(res => {
         if(res.data.insertedId) {
           toast.success(`${name} added to the cart Succesfully.`);
+          refetch();
         }
       })
 

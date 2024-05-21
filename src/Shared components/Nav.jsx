@@ -15,7 +15,7 @@ import useCart from "../hooks/useCart";
 const Nav = () => {
   const [openNav, setOpenNav] = useState(false);
   const { user, logOut } = useData();
-  const cart = useCart(user?.uid);
+  const [cart] = useCart();
   console.log(cart);
 
   React.useEffect(() => {
@@ -48,6 +48,7 @@ const Nav = () => {
       </Typography>
       <Typography as="li" variant="small" color="blue-gray" className="p-1">
         <NavLink
+          to='/dashboard'
           className={({ isActive }) =>
             isActive ? `flex items-center text-[#EEFF25]` : `flex items-center`
           }
@@ -77,7 +78,7 @@ const Nav = () => {
       </Typography>
       {user && <Typography as="li" variant="small" color="blue-gray" className="p-1">
         <NavLink
-          to="/"
+          to="/dashboard/mycart"
           className={({ isActive }) =>
             isActive ? `flex items-center text-[#EEFF25]` : `flex items-center`
           }
