@@ -3,22 +3,53 @@ import { useForm } from 'react-hook-form'
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import useData from '../../hooks/useData'
-import { updateProfile } from 'firebase/auth'
+import { GoogleAuthProvider, updateProfile } from 'firebase/auth'
 import toast from 'react-hot-toast'
+import useAxios from '../../hooks/useAxios'
 
 const SignUp = () => {
 
   const navigate = useNavigate();
+  const myAxios = useAxios();
   const { register, handleSubmit, formState: {errors} } = useForm()
 
-  const {auth, signUp, setUser} = useData();
+  const {auth, signUp, setUser, signInPop} = useData();
+
+
+  const googleProvider = new GoogleAuthProvider();
+
+  const onIconClick = (provider) => {
+    signInPop(provider)
+    .then(result => {
+      // add user to data base
+      const user = {name: result.user?.displayName ,email: result.user.email, uid: result.user.uid, role: 0};
+      myAxios.put('/users', user)
+      .then(res => {
+        console.log('user added to database: ', res.data);
+      })
+      // setUser
+      setUser(result.user);
+      toast.success('Successfully registered.');
+      navigate('/');
+    })
+    .catch(e => {
+      console.log('sign in err: ', e);
+    })
+  }
 
   const onSubmit = (data, e) => {
     console.log(data);
     signUp(data.email, data.password)
     .then(result => {
       console.log(result.user);
-      updateProfile(auth.currentUser, {displayName: data.name})
+      updateProfile(auth.currentUser, {displayName: data.name});
+      // add user to data base
+      const user = {name: result.user?.displayName ,email: result.user.email, uid: result.user.uid, role: 0};
+      myAxios.put('/users', user)
+      .then(res => {
+        console.log('user added to database: ', res.data);
+      })
+      // setUser
       setUser(result.user);
       toast.success('Succesfully registered.')
       navigate('/');
@@ -59,7 +90,7 @@ const SignUp = () => {
           <p className='text-center text-xl font-medium'>Or sign up with</p>
           <div className='flex justify-center gap-10'>
             <div className='cursor-pointer text-2xl border border-[#444444] rounded-full p-3'><FaFacebook/></div>
-            <div className='cursor-pointer text-2xl border border-[#444444] rounded-full p-3'><FaGoogle/></div>
+            <div className='cursor-pointer text-2xl border border-[#444444] rounded-full p-3' onClick={() => onIconClick(googleProvider)}><FaGoogle/></div>
             <div className='cursor-pointer text-2xl border border-[#444444] rounded-full p-3'><FaGithub/></div>
           </div>
         </div>

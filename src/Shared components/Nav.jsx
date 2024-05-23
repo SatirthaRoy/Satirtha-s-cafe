@@ -16,7 +16,6 @@ const Nav = () => {
   const [openNav, setOpenNav] = useState(false);
   const { user, logOut } = useData();
   const [cart] = useCart();
-  console.log(cart);
 
   React.useEffect(() => {
     window.addEventListener(
@@ -46,7 +45,7 @@ const Nav = () => {
           Contact Us
         </NavLink>
       </Typography>
-      <Typography as="li" variant="small" color="blue-gray" className="p-1">
+      {user && <Typography as="li" variant="small" color="blue-gray" className="p-1">
         <NavLink
           to='/dashboard'
           className={({ isActive }) =>
@@ -55,7 +54,7 @@ const Nav = () => {
         >
           Dashboard
         </NavLink>
-      </Typography>
+      </Typography>}
       <Typography as="li" variant="small" color="blue-gray" className="p-1">
         <NavLink
           to="/menu"

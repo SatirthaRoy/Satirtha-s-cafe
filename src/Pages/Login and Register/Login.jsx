@@ -5,15 +5,38 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import useData from '../../hooks/useData';
 import toast from 'react-hot-toast';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import useAxios from '../../hooks/useAxios';
 
 const Login = () => {
-
+  const myAxios = useAxios();
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
   const { register, handleSubmit, formState: {errors} } = useForm()
   const [capError, setCapError] = useState(false);
-  const {signIn, setUser} = useData();
+  const {signIn, setUser, signInPop} = useData();
+
+  const googleProvider = new GoogleAuthProvider();
+  const gitHubProvider = new GithubAuthProvider();
+
+  const onIconClick = (provider) => {
+    signInPop(provider)
+    .then(result => {
+      // add user to data base
+      const user = {name: result.user?.displayName ,email: result.user.email, uid: result.user.uid, role: 0};
+      myAxios.put('/users', user)
+      .then(res => {
+        console.log('user added to database: ', res.data);
+      })
+      // setUser
+      setUser(result.user);
+      toast.success('Successfully logged in.');
+      navigate(location?.state?.from?.pathname || '/');
+    })
+    .catch(e => {
+      console.log('sign in err: ', e);
+    })
+  }
 
   const onSubmit = (data, e) => {
     console.log(data);
@@ -74,7 +97,7 @@ const Login = () => {
           <p className='text-center text-xl font-medium'>Or sign in with</p>
           <div className='flex justify-center gap-10'>
             <div className='cursor-pointer text-2xl border border-[#444444] rounded-full p-3'><FaFacebook/></div>
-            <div className='cursor-pointer text-2xl border border-[#444444] rounded-full p-3'><FaGoogle/></div>
+            <div className='cursor-pointer text-2xl border border-[#444444] rounded-full p-3' onClick={() => onIconClick(googleProvider)}><FaGoogle/></div>
             <div className='cursor-pointer text-2xl border border-[#444444] rounded-full p-3'><FaGithub/></div>
           </div>
         </div>

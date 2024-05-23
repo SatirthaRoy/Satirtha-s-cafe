@@ -20,6 +20,9 @@ import {
 } from '@tanstack/react-query'
 import Dashboard from './Pages/Dashboard/Dashboard.jsx';
 import Mycart from './Pages/My cart/Mycart.jsx';
+import Addreview from './Pages/Add a review/Addreview.jsx';
+import Private from './Private/Private.jsx';
+import Users from './Pages/All users/Users.jsx';
 
 const queryClient = new QueryClient()
 
@@ -56,11 +59,19 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <Dashboard/>,
+    element: <Private><Dashboard/></Private>,
     children: [
       {
         path: '/dashboard/mycart',
         element: <Mycart/>
+      },
+      {
+        path: '/dashboard/addreview',
+        element: <Addreview/>
+      },
+      {
+        path: '/dashboard/allusers',
+        element: <Users/>
       }
     ]
   }
