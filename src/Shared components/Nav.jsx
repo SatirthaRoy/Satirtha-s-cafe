@@ -6,6 +6,7 @@ import {
   Typography,
   Button,
   IconButton,
+  Collapse,
 } from "@material-tailwind/react";
 import { Link, NavLink } from "react-router-dom";
 import useData from "../hooks/useData";
@@ -183,7 +184,7 @@ const Nav = () => {
             </IconButton>
           </div>
         </div>
-        <MobileNav open={openNav}>
+        <Collapse open={openNav}>
           {navList}
           {user ? (
             <div className="flex justify-center items-center gap-5">
@@ -227,7 +228,7 @@ const Nav = () => {
               </Link>
             </div>
           )}
-        </MobileNav>
+        </Collapse >
       </Navbar>
     </div>
   );

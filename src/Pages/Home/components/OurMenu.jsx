@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import SectionTitle from '../../../Shared components/SectionTitle'
 import MenuItem from '../../../Shared components/MenuItem';
+import useAxios from '../../../hooks/useAxios';
 
 const OurMenu = () => {
-
+  const myAxios = useAxios();
   const [menu, setMenu] = useState([]);
 
   useEffect(() => {
-    fetch('/bistro-boss-restaurant-resources-main/menu.json')
-    .then(res => res.json())
-    .then(data => {
-      data.length > 6 && setMenu(data.slice(0,6))
-    })
+    // fetch('/bistro-boss-restaurant-resources-main/menu.json')
+    // .then(res => res.json())
+    // .then(data => {
+    //   data.length > 6 && setMenu(data.slice(0,6))
+    // })
+    myAxios.get('/menu')
+    .then(res => {
+      res.data.length > 6 && setMenu(res.data.slice(0,6))
+    }) 
   }, [])
 
 

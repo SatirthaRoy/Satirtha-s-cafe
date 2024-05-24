@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Banner from './components/Banner'
 import Category from './components/Category'
 import OurMenu from './components/OurMenu'
 import OurRecomends from './components/OurRecomends'
 import FromOurMenu from './components/FromOurMenu'
+import useAxios from '../../hooks/useAxios'
 
 const Home = () => {
+  const myAxios = useAxios();
+  useEffect(() => {
+    myAxios.get('/menu')
+    .then(res => {
+      console.log(res.data);
+    })
+  })
+  
   return (
     <div className='space-y-20'>
       <Banner/>

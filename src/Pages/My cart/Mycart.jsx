@@ -2,6 +2,7 @@ import React from 'react'
 import useCart from '../../hooks/useCart'
 import SectionTitle from '../../Shared components/SectionTitle';
 import CartTable from './components/CartTable';
+import useAxios from '../../hooks/useAxios';
 
 const Mycart = () => {
 
