@@ -10,7 +10,7 @@ const UserContent = () => {
     <>
       <NavLink  className={({isActive}) => isActive ? 'text-white cinzel flex gap-4 items-center text-base' : `cinzel flex gap-4 items-center text-base`}><FaHome className='text-2xl'/>User Home</NavLink>
       <NavLink  className={({isActive}) => isActive ? 'text-white cinzel flex gap-4 items-center text-base' : `cinzel flex gap-4 items-center text-base`}><SlCalender className='text-2xl'/>Reservation</NavLink>
-      <NavLink  className={({isActive}) => isActive ? 'text-white cinzel flex gap-4 items-center text-base' : `cinzel flex gap-4 items-center text-base`}><FaMoneyCheck className='text-2xl'/>payment history</NavLink>
+      <NavLink to='/dashboard/paymenthistory' className={({isActive}) => isActive ? 'text-white cinzel flex gap-4 items-center text-base' : `cinzel flex gap-4 items-center text-base`}><FaMoneyCheck className='text-2xl'/>payment history</NavLink>
       <NavLink to='/dashboard/mycart' className={({isActive}) => isActive ? 'text-white cinzel flex gap-4 items-center text-base' : `cinzel flex gap-4 items-center text-base`}><FaShoppingCart className='text-2xl'/>my cart</NavLink>
       <NavLink to='/dashboard/addreview' className={({isActive}) => isActive ? 'text-white cinzel flex gap-4 items-center text-base' : `cinzel flex gap-4 items-center text-base`}><LiaComment className='text-2xl' />add review</NavLink>
       <NavLink  className={({isActive}) => isActive ? 'text-white cinzel flex gap-4 items-center text-base' : `cinzel flex gap-4 items-center text-base`}><BsCalendar2Date className='text-2xl'/>my booking</NavLink>

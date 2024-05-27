@@ -16,6 +16,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import ManageItems from '../Pages/Manage Items/ManageItems.jsx';
 import UpdateItem from '../Pages/Update Item/UpdateItem.jsx';
 import Payment from '../Pages/Payment page/Payment.jsx';
+import History from '../Pages/Payment history/History.jsx';
 
 
 
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/payment',
         element: <Payment/>
+      },
+      {
+        path: '/dashboard/paymenthistory',
+        element: <History/>
       },
       {
         path: '/dashboard/addreview',

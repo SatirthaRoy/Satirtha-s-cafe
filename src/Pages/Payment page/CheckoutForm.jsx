@@ -16,14 +16,17 @@ const CheckoutForm = () => {
   const [clientSecret, setClientSecret] = useState('')
   const myAxios = useAxios();
   useEffect(() => {
-    myAxios.post('/payment', {price: Number(totalPrice) * 100})
-    .then(res => {
-      console.log(res.data?.clientSecret);
-      setClientSecret(res.data?.clientSecret);
-    })
-    .catch(e => {
-      console.log(e);
-    })
+    if(Number(totalPrice) > .5) {
+      myAxios.post('/payment', {price: Number(totalPrice) * 100})
+      .then(res => {
+        console.log(res.data?.clientSecret);
+        setClientSecret(res.data?.clientSecret);
+      })
+      .catch(e => {
+        console.log(e);
+      })
+    }
+    
   }, [myAxios, totalPrice])
 
   const handleSubmit = async(e) => {
