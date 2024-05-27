@@ -62,16 +62,16 @@ const AddItem = () => {
 
 
   return (
-    <div className='w-full my-20'>
+    <div className='w-full py-20 bg-white'>
       <SectionTitle title='ADD AN ITEM' phrase="What's New?"/>
       <div className="flex flex-col justify-center items-center gap-6 bg-[#F3F3F3] lg:px-28 w-11/12 mx-auto md:px-16 px-6 py-11">
         <div className="w-11/12 space-y-5">
-          <h3 className="font-semibold">Recipe Name</h3>
+          <h3 className="font-semibold">Recipe Name*</h3>
           <input type="text" {...register('name', {required: true})} className="p-5 rounded-lg w-full" placeholder="Recipe name"/>
           {errors.name?.type === 'required' && <p className='text-red-400'>Name is required.</p>}
           <div className='flex flex-col md:flex-row w-full gap-4'>
             <div className='flex-1 space-y-3'>
-              <h3 className="font-semibold">Category</h3>
+              <h3 className="font-semibold">Category*</h3>
               <select {...register('category')} defaultValue='0' value={category} onChange={e => setCategory(e.target.value)} name="dropdown" id="" className="p-5 *:p-5 rounded-lg w-full">
                 <option value="0">Category</option>
                 <option value="salad">salad</option>
@@ -83,7 +83,7 @@ const AddItem = () => {
               {errors.category?.type === 'required' && <p className='text-red-400'>Category is required.</p>}
             </div>
             <div className='flex-1 space-y-3'>
-              <h3 className="font-semibold">Price</h3>
+              <h3 className="font-semibold">Price*</h3>
               <input type="text" {...register('price', {required: true})} className="p-5 rounded-lg w-full" placeholder="Price"/>
               {errors.price?.type === 'required' && <p className='text-red-400'>Price is required.</p>}
             </div>
@@ -91,7 +91,7 @@ const AddItem = () => {
           <h3 className="font-semibold">Recipe Details*</h3>
           <textarea type="text" {...register('recipe', {required: true})} className="p-5 rounded-lg w-full" placeholder="Details"></textarea>
           {errors.recipe?.type === 'required' && <p className='text-red-400'>Recipe detail is required.</p>}
-          <input {...register('image', {required: true})} type="file" className='file-input'/>
+          <input {...register('image', {required: true})} type="file" className='file-input file-input-xs md:file-input-md'/>
           {errors.image?.type === 'required' && <p className='text-red-400'>Image is required.</p>}
           <button onClick={handleSubmit(onSubmit)} className="text-white font-semibold p-4 bg-gradient-to-r from-[#835D23] to-[#B58130] flex items-center gap-3">{buttonLoading? <span className="loading loading-spinner text-neutral"></span>:<>Add Item<ImSpoonKnife className='text-2xl'/></>}</button>
         </div>

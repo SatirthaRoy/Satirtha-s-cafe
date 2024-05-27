@@ -48,7 +48,7 @@ const CartTable = ({ cart }) => {
           {/* row 1 */}
           {cart.map((item, i) => {
             return (
-              <tr className="*:p-3">
+              <tr key={i} className="*:p-3">
                 <th>
                   {i+1}
                 </th>

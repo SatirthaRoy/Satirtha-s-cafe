@@ -8,6 +8,7 @@ import useData from '../../hooks/useData'
 import useAxios from '../../hooks/useAxios'
 import AdminContent from './Dashboard Content/AdminContent'
 import UserContent from './Dashboard Content/UserContent'
+import { Toaster } from 'react-hot-toast'
 
 const Dashboard = () => {
   const myAxios = useAxios();
@@ -26,12 +27,16 @@ const Dashboard = () => {
   }, [])
 
   return (
-    <div className='flex justify-start gap-6'>
-      <div className="drawer lg:drawer-open max-w-0 md:max-w-80">
+    <div className='flex justify-start bg-[#F6F6F6]'>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      /> 
+      <div className="drawer lg:drawer-open max-w-0 lg:max-w-80">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center">
           {/* Page content here */}
-          <label htmlFor="my-drawer-2" className="text-4xl drawer-button lg:hidden absolute top-4 left-4"><GiHamburgerMenu /></label>
+          <label htmlFor="my-drawer-2" className="text-4xl drawer-button lg:hidden fixed top-4 left-4"><GiHamburgerMenu /></label>
         
         </div> 
         <div className="drawer-side">
@@ -58,6 +63,7 @@ const Dashboard = () => {
       <div className='w-full flex items-center justify-center'>
         <Outlet/>
       </div>
+      
     </div>
   )
 }

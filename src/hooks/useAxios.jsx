@@ -9,11 +9,12 @@ const myAxios = axios.create({
 })
 
 const useAxios = () => {
-  // const navigate = useNavigate();
+
+  const navigate = useNavigate();
   myAxios.interceptors.response.use(res => {
     return res
   }, err => {
-    const code = err.response.status;
+    const code = err.response?.status;
     if(code === 401 || code === 403) {
       // navigate('/login');
     }

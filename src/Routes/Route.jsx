@@ -13,6 +13,9 @@ import Users from '../Pages/All users/Users.jsx';
 import AdminRoute from '../Private/AdminRoute.jsx';
 import AddItem from '../Pages/Add Item/AddItem.jsx';
 import { createBrowserRouter } from 'react-router-dom';
+import ManageItems from '../Pages/Manage Items/ManageItems.jsx';
+import UpdateItem from '../Pages/Update Item/UpdateItem.jsx';
+import Payment from '../Pages/Payment page/Payment.jsx';
 
 
 
@@ -56,6 +59,10 @@ export const router = createBrowserRouter([
         element: <Mycart/>
       },
       {
+        path: '/dashboard/payment',
+        element: <Payment/>
+      },
+      {
         path: '/dashboard/addreview',
         element: <Addreview/>
       },
@@ -66,6 +73,15 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/additem',
         element: <AdminRoute><AddItem/></AdminRoute>
+      },
+      {
+        path: '/dashboard/manageitems',
+        element: <AdminRoute><ManageItems/></AdminRoute>
+      },
+      {
+        path: '/dashboard/updateitem/:id',
+        element: <AdminRoute><UpdateItem/></AdminRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/menu?id=${params.id}`)
       }
     ]
   }

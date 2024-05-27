@@ -3,6 +3,7 @@ import useCart from '../../hooks/useCart'
 import SectionTitle from '../../Shared components/SectionTitle';
 import CartTable from './components/CartTable';
 import useAxios from '../../hooks/useAxios';
+import { Link } from 'react-router-dom';
 
 const Mycart = () => {
 
@@ -15,7 +16,9 @@ const Mycart = () => {
         <div className='w-full flex justify-between items-center'>
           <h1 className='cinzel text-lg md:text-3xl font-bold'>Total orders: {cart.length}</h1>
           <h1 className='cinzel text-lg md:text-3xl font-bold'>total price: ${cart.reduce((ini, curr) => ini + curr?.price, 0)}</h1>
-          <button className='cinzel p-3 bg-[#D1A054] rounded-lg font-bold text-white'>Pay</button>
+          <Link to='/dashboard/payment'>
+            <button className='cinzel p-3 bg-[#D1A054] rounded-lg font-bold text-white'>Pay</button>
+          </Link>
         </div>
         <CartTable cart={cart}/>
        </div>

@@ -1,26 +1,25 @@
-import { useEffect, useState } from 'react'
 import useAxios from './useAxios';
+import { useQuery } from '@tanstack/react-query';
 
 const useMenuFetch = () => {
-  const [menu, setMenu] = useState([]);
-  const [loading, setLoading] = useState(true);
   const myAxios = useAxios();
 
-  useEffect(() => {
-    // fetch('/bistro-boss-restaurant-resources-main/menu.json')
-    // .then(res => res.json())
-    // .then(data => {
-    //   setMenu(data);
-    //   setLoading(false);
-    // })
-    myAxios.get('/menu')
-    .then(res => {
-      setMenu(res.data);
-      setLoading(false);
-    })
-  }, [])
+  // useEffect(() => {
+  //   myAxios.get('/menu')
+  //   .then(res => {
+  //     setMenu(res.data);
+  //     setLoading(false);
+  //   })
+  // }, [])
+  const {data:menu=[], isPending:loading, refetch} = useQuery({
+    queryKey: ['menu'],
+    queryFn: async () => {
+      const res = await myAxios.get('/menu')
+      return res.data;
+    }
+  })
 
-  return [menu, loading];
+  return [menu, loading, refetch];
 
 }
 
