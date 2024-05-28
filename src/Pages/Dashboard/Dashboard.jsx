@@ -3,7 +3,7 @@ import { FaHome, FaShoppingBag } from 'react-icons/fa'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { MdEmail } from 'react-icons/md'
 import { RxCross1 } from 'react-icons/rx'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import useData from '../../hooks/useData'
 import useAxios from '../../hooks/useAxios'
 import AdminContent from './Dashboard Content/AdminContent'
@@ -12,6 +12,7 @@ import { Toaster } from 'react-hot-toast'
 
 const Dashboard = () => {
   const myAxios = useAxios();
+  const navigate = useNavigate();
   const {user} = useData();
   const [admin, setAdmin] = useState(false);
   useEffect(() => {
@@ -19,8 +20,10 @@ const Dashboard = () => {
     .then(res => {
       if(res.data?.role) {
         setAdmin(true);
+        navigate('/dashboard/adminhome');
       } else {
         setAdmin(false);
+        navigate('/dashboard/userhome');
       }
     })
     .catch(e => console.log(e))

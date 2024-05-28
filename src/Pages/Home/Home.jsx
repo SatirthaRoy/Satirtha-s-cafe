@@ -11,7 +11,7 @@ const Home = () => {
   useEffect(() => {
     myAxios.get('/menu')
     .then(res => {
-      console.log(res.data);
+      // console.log(res.data);
     })
   })
   
